@@ -1,0 +1,22 @@
+{
+    "experiments": [
+        {
+            "RBNumber": "RB12345",
+            "experimentTitle": "Test Experiment",
+            "investigator": "Dr. Smith",    
+            "notes": "This is a test experiment for React Scheduler."
+        },
+        {
+            "RBNumber": "RB67890",
+            "experimentTitle": "Another Experiment",
+            "investigator": "Dr. Johnson",
+            "notes": "This is another test experiment."
+        },
+        {
+            "RBNumber": "RB54321",
+            "experimentTitle": "Sample Experiment",
+            "investigator": "Dr. Brown",
+            "notes": "This is a sample experiment for demonstration."
+        }
+    ]
+}

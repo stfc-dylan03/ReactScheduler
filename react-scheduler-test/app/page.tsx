@@ -1,11 +1,15 @@
 import Image from "next/image";
 import fs from "fs/promises";
 import path from "path";
-import experiment from "../data/exampleExperiment.json";  
+//import experiment from "../data/exampleExperiment.json";  
 
-export default async function Home() {
-  const filePath = path.join(process.cwd(), "data", "example.txt");
-  const fileContents = await fs.readFile(filePath, "utf8");
+import data from "../data/experiments.json";
+import { ExperimentsFile } from "../types/Experiment";
+
+export default function Home() {
+
+
+  const experiments = (data as ExperimentsFile).experiments;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -19,10 +23,10 @@ export default async function Home() {
           priority
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+          <h1 className="max-w-xs text-3xl font-semibold leading-20 tracking-tight text-black dark:text-zinc-50">
             Experiment Scheduler.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="max-w-md text-lg leading-6 text-zinc-600 dark:text-zinc-400">
             Looking for a starting point or more instructions? Head over to{" "}
             <a
               href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -39,12 +43,15 @@ export default async function Home() {
             </a>{" "}
             center.
           </p>
-          <h1 className="max-w-xs text-xl font-bold leading-10 tracking-tight text-black dark:text-zinc-50">File Contents:</h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">{fileContents}</p>
-          <h1 className="max-w-xs text-xl font-bold leading-10 tracking-tight text-black dark:text-zinc-50">Experiment Details:</h1>
-          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400"><strong>Name:</strong> {experiment.experimentName}</p>
-          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400"><strong>RB Number:</strong> {experiment.RBNumber}</p>
-          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400"><strong>Notes:</strong> {experiment.notes}</p>
+
+          <h1 className="max-w-xs text-xl font-bold leading-8 tracking-tight text-black dark:text-zinc-50">Experiments:</h1>
+          {experiments.map((exp) => (
+            <div key={exp.RBNumber}>
+              <h2><strong>{exp.experimentTitle}</strong></h2>
+              <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400"><strong>Investigator:</strong> {exp.investigator}</p>
+              <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400"><strong>Notes:</strong> {exp.notes}</p>
+            </div>
+          ))}
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
