@@ -1,6 +1,7 @@
 import Image from "next/image";
 import fs from "fs/promises";
 import path from "path";
+import experiment from "../data/exampleExperiment.json";  
 
 export default async function Home() {
   const filePath = path.join(process.cwd(), "data", "example.txt");
@@ -40,6 +41,10 @@ export default async function Home() {
           </p>
           <h1 className="max-w-xs text-xl font-bold leading-10 tracking-tight text-black dark:text-zinc-50">File Contents:</h1>
           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">{fileContents}</p>
+          <h1 className="max-w-xs text-xl font-bold leading-10 tracking-tight text-black dark:text-zinc-50">Experiment Details:</h1>
+          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400">Name: {experiment.experimentName}</p>
+          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400">RB Number: {experiment.RBNumber}</p>
+          <p className="max-w-md text-lg leading-1 text-zinc-600 dark:text-zinc-400">Notes: {experiment.notes}</p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
