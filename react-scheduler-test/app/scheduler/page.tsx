@@ -20,6 +20,16 @@ type ExperimentsFile = {
     experiments: Experiment[];
 };
 
+const instrumentColours: Record<string, string> = {
+    ChipIR : "#ff7b00ff",
+    ZOOM : "#2f00ffff",
+    WISH : "#91ff00ff",
+}
+
+function getInstrumentColour(instrument: string): string {
+    return instrumentColours[instrument] ?? "#ddd";
+}
+
 function buildMonthCalendar(date: Date): (Date | null)[] {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -170,16 +180,33 @@ export default function SchedulerPage() {
                                     <div
                                     key={exp.RBNumber}
                                     style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "0.25rem",
                                         borderRadius: "0px",
                                         border: "1px solid #aaa",
                                         padding: "0.1rem 0.2rem",
-                                        overflow: "hidden",
-                                        textOverflow: "ellipsis",
-                                        whiteSpace: "nowrap",
                                     }}
                                     title={`${exp.RBNumber} ${exp.experimentTitle} (Investigator: ${exp.investigator})`}
                                     >
-                                        {exp.RBNumber} {exp.investigator}
+                                        {/* Colour Indicator */}
+                                        <div style={{ 
+                                            width: "3px", 
+                                            alignSelf: "stretch",   
+                                            borderRadius: "3px",
+                                            backgroundColor: getInstrumentColour(exp.instrument),
+                                            flexShrink: 0
+                                        }}
+                                        />
+                                        <div 
+                                            style={{
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis",
+                                                whiteSpace: "nowrap",
+                                            }}
+                                        >
+                                            {exp.RBNumber} {exp.investigator}
+                                        </div>
                                     </div>
                                 ))}
                             </div>  
