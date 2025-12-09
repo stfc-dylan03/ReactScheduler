@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link"
+import { useMemo, useState } from "react";
 
 const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]; 
 
@@ -28,12 +31,33 @@ function buildMonthCalendar(date: Date): (Date | null)[] {
 
 export default function SchedulerPage() {
     const today = new Date();
-    const monthLabel = today.toLocaleString("default", {
-        month: "long",
-        year: "numeric",
-    });
+
+    const [currentMonth, setCurrentMonth] = useState(
+        () => new Date(today.getFullYear(), today.getMonth(), 1)
+    );
+
+    const {monthLabel, days} = useMemo(() => {
+        const label = currentMonth.toLocaleString("default", {
+            month: "long",
+            year: "numeric",
+        });
+
+        const grid = buildMonthCalendar(currentMonth);
+
+        return { monthLabel: label, days: grid };
+    }, [currentMonth]);    
     
-    const days = buildMonthCalendar(today);
+    const goPrev = () => {
+        setCurrentMonth((prev) => 
+            new Date(prev.getFullYear(), prev.getMonth() - 1, 1)
+        );
+    };
+
+    const goNext = () => {
+        setCurrentMonth((prev) => 
+            new Date (prev.getFullYear(), prev.getMonth() + 1, 1)
+        );
+    };
 
     return (
         <main style={{ padding: "2rem"}}>
@@ -43,10 +67,19 @@ export default function SchedulerPage() {
                 justifyContent: "space-between",    
                 marginBottom: "1rem",
                 alignItems: "center",
+                gap: "1rem",
             }}>
-                <Link href = "/"><button>Home</button></Link>
-                <h1 style={{ margin: 0 }}>{monthLabel}</h1>
-                <div/>
+                <Link href = "/"><button>{'<'} Home</button></Link>
+
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <button onClick={goPrev}>{'<'}</button>
+                    <h1 style={{ margin: 0 }}>{monthLabel}</h1>
+                    <button onClick={goNext}>{'>'}</button>
+                </div>
+
+
+                
+                <div style={{ width: "80px" }}/>
             </header>
             <section style={{
                 display: "grid",
