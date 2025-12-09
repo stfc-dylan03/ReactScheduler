@@ -38,7 +38,9 @@ Currently each commit highlights a new feature added and shows how to do somethi
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To run, navigate to `/react-scehduler-test` and run `npm run dev`
+1. Clone the repo
+2. Navigate to `/react-scehduler-test`
+3. Run the command `npm run dev`
 
 
 <!-- FINDINGS -->
