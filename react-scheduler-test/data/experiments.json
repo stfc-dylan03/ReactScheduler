@@ -3,20 +3,29 @@
         {
             "RBNumber": "RB12345",
             "experimentTitle": "Test Experiment",
-            "investigator": "Dr. Smith",    
-            "notes": "This is a test experiment for React Scheduler."
+            "investigator": "Dr. Smith",
+            "instrument": "ChipIR",
+            "notes": "This is a test experiment for React Scheduler.",
+            "startDate": "2025-12-05",
+            "endDate": "2025-12-10"
         },
         {
             "RBNumber": "RB67890",
             "experimentTitle": "Another Experiment",
             "investigator": "Dr. Johnson",
-            "notes": "This is another test experiment."
+            "instrument": "ZOOM",
+            "notes": "This is another test experiment.",
+            "startDate": "2025-12-07",
+            "endDate": "2025-12-9"
         },
         {
             "RBNumber": "RB54321",
             "experimentTitle": "Sample Experiment",
             "investigator": "Dr. Brown",
-            "notes": "This is a sample experiment for demonstration."
+            "instrument": "WISH",
+            "notes": "This is a sample experiment for demonstration.",
+            "startDate": "2025-12-10",
+            "endDate": "2025-12-15"
         }
     ]
 }
