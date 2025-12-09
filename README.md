@@ -41,7 +41,7 @@ Currently each commit highlights a new feature added and shows how to do somethi
 ## Getting Started
 
 1. Clone the repo
-2. Navigate to `/react-scehduler-test`
+2. Navigate to `/react-scheduler-test`
 3. Run the command `npm run dev`
 
 
