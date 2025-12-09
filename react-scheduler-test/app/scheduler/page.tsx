@@ -110,7 +110,8 @@ export default function SchedulerPage() {
             <section style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(7, 1fr)",
-                gap: "0.5rem",  
+                gap: 0,
+                border:" 1px solid #ccc",
             }}>
                 {/* Weekday Headers */}
                 {weekdays.map((day) => (
@@ -129,7 +130,10 @@ export default function SchedulerPage() {
                 {/* Day Cells */}
                 {days.map((date, index) => {
                     if (!date) {
-                        return <div key = {`empty-${index}`} />;
+                        return <div key = {`empty-${index}`} style={{
+                            borderRight: "1px solid #ddd",
+                            borderBottom: "1px solid #ddd", 
+                        }} />;
                     }
 
                     const isToday =
@@ -145,15 +149,16 @@ export default function SchedulerPage() {
                         <div
                         key={date.toISOString()}
                         style={{    
-                            border: "1px solid #ccc",
+                            borderRight: "1px solid #ddd",
+                            borderBottom: "1px solid #ddd",
                             borderRadius: "4px",
-                            padding: "0.5rem",
-                            minHeight: "80px",
-                            fontSize: "0.9rem", 
-                            backgroundColor: isToday ? "#add8e6" : "transparent",
+                            padding: "0.25rem",
+                            minHeight: "70px",
+                            fontSize: "0.8rem", 
+                            backgroundColor: isToday ? "#00bfff98" : "transparent",
                             display: "flex",
                             flexDirection: "column",
-                            gap: "0.25rem",
+                            gap: "0.2rem",
                         }}>
                             <div style={{fontWeight: "bold" }}>
                                 {date.getDate()}
@@ -165,16 +170,16 @@ export default function SchedulerPage() {
                                     <div
                                     key={exp.RBNumber}
                                     style={{
-                                        borderRadius: "2px",
-                                        border: "1px solid #888",
+                                        borderRadius: "0px",
+                                        border: "1px solid #aaa",
                                         padding: "0.1rem 0.2rem",
                                         overflow: "hidden",
                                         textOverflow: "ellipsis",
                                         whiteSpace: "nowrap",
                                     }}
-                                    title={`${exp.experimentTitle} (Investigator: ${exp.investigator})`}
+                                    title={`${exp.RBNumber} ${exp.experimentTitle} (Investigator: ${exp.investigator})`}
                                     >
-                                        {exp.experimentTitle}
+                                        {exp.RBNumber} {exp.investigator}
                                     </div>
                                 ))}
                             </div>  
