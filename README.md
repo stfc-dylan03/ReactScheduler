@@ -54,6 +54,8 @@ Hot reload is a feature where the web page updates instantly when a change is ma
 
 This allows for much faster development which is extremely beneficial.
 
+Due to the tech stack being relatively simple, hot reload works seamlessley (except when there are build errors, then hot reload pauses until these errors are resolved). However, when more complex technologies and languages are introduced there is a possibility of hot reload no longer working, or at least not as well/efficiently.
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
