@@ -1,3 +1,5 @@
+[![Issues][issues-shield]][issues-url]
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -59,3 +61,5 @@ This allows for much faster development which is extremely beneficial.
 [React-url]: https://reactjs.org/
 [TypeScript]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
 [TypeScript-url]: https://www.typescriptlang.org/
+[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-url]: https://github.com/stfc-dylan03/ReactScheduler/issues
